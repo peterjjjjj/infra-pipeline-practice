@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  practice_app:
+    build: .
+    #Open port 5000 to other containers.
+    expose:
+      - "5000"
+
+  nginx:
+    image: nginx:latest
+    ports:
+      #Maps the website 8080 to port 80 in nginx.
+      - "8080:80"
+      #Map 8443 the https port to nginx port 443.
+      - "8443:443"
+    #Locate nginx.conf and read volume I defined.
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      #Finds or creates a log folder for nginx on my laptop.
+      - ./logs/nginx:/var/log/nginx
+      #Give nginx access to certs folder.
+      - ./certs:/etc/nginx/certs:ro
+    depends_on:
+      - practice_app

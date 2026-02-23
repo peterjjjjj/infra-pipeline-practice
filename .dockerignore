@@ -1,0 +1,10 @@
+venv/
+.venv/
+
+static/
+
+templates/
+
+run_app.sh
+
+logs/

@@ -1,0 +1,17 @@
+name: Test Run 1
+on: [push]
+
+jobs:
+  test-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Code
+        uses: actions/checkout@v4
+
+      - name: Welcome Message
+        run: echo "Testing on date $(date)"
+
+      - name: Checkout Environment
+        run: |
+          python3 --version
+          docker --version

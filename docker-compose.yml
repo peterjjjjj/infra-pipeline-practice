@@ -5,7 +5,7 @@ services:
     build: .
     #Open port 5000 to other containers.
     expose:
-      - "5000"
+      - "5000:5000"
 
   nginx:
     image: nginx:latest

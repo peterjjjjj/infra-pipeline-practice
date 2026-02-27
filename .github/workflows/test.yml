@@ -19,14 +19,42 @@ jobs:
       - name: Check Syntax
         run: flake8 . --count --select=E9,F63,F7,F82
 
+  #Old docker build test
+
+  #  docker-build:
+  #    runs-on: ubuntu-latest
+  #    needs: lint-test
+  #    steps:
+  #      - name: Clone Code
+  #        uses: actions/checkout@v4
+  #
+  #      - name: Build Docker
+  #        run: |
+  #          echo "Build Docker"
+  #          docker build -t practice_app:latest .
+
   docker-build:
     runs-on: ubuntu-latest
     needs: lint-test
+
+    permissions:
+      contents: read
+      packages: write
+
     steps:
-      - name: Clone Code
+      - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Build Docker
-        run: |
-          echo "Build Docker"
-          docker build -t practice_app:latest .
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build & Push Image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: ghcr.io/${{ github.repository }}:lastest

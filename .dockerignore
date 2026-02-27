@@ -8,3 +8,6 @@ templates/
 run_app.sh
 
 logs/
+
+certs/
+

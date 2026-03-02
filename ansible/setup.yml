@@ -28,7 +28,7 @@
           path: "{{ item }}"
           #Read only permission.
           mode: '0644'
-          owner: "{{ ansible_user_id }}"
+          owner: "{{ ansible_facts['user_id'] }}"
         loop:
           - "{{ project_root }}/certs/nginx.key"
           - "{{ project_root }}/certs/nginx.crt"
@@ -37,3 +37,4 @@
         community.docker.docker_compose_v2:
           project_src: "{{ project_root }}"
           state: present
+          docker_host: "unix://{{ ansible_user_dir }}/.docker/run/docker.sock"

@@ -38,8 +38,8 @@
       community.docker.docker_compose_v2:
         project_src: "{{ project_root }}"
         state: present
+        pull: always
         #Specific path for Docker Desktop on Mac
         #docker_host: "unix:///var/run/docker.sock"
       #Docker on Mac runs as the user, not root
       become: false
-      detach: true

@@ -11,9 +11,10 @@ services:
     image: nginx:latest
     ports:
       #Maps the website 8080 to port 80 in nginx.
-      - "8080:80"
+      - "8080:443"
       #Map 8443 the https port to nginx port 443.
       - "8443:443"
+      - "5001:80"
     #Locate nginx.conf and read volume I defined.
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro

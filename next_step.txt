@@ -1,0 +1,5 @@
+To do lists:
+
+After done with terraform, deploy the package on AWS Server, update nginx, ansible configuration.
+
+OIDC for AWS later to replace awscli

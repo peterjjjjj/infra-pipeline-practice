@@ -17,6 +17,7 @@ keys/
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
+*variables
 
 # OS / IDE
 .vscode/

@@ -4,6 +4,7 @@ variable "aws_region" {
   default = "us-west-2"
 }
 
+#In terraform.tfvars.
 variable "key_name" {
   description = "Name of the SSK Key pair accessing EC2"
   type = string

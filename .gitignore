@@ -8,3 +8,19 @@ logs/
 certs/
 keys/
 *.pem
+
+# Python
+.venv/
+
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# OS / IDE
+.vscode/
+
+# Project Specific
+certs/*.crt
+certs/*.key

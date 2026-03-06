@@ -18,4 +18,5 @@ variable "instance_type" {
 variable "project_name" {
   description = "Name of the proj"
   type = string
+  default = "Infra-Practice"
 }

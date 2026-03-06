@@ -6,3 +6,5 @@ venv/
 .idea/
 logs/
 certs/
+keys/
+*.pem

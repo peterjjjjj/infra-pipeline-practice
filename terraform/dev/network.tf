@@ -3,6 +3,7 @@ resource "aws_security_group" "practice_sg" {
   description = "Firewall"
 }
 
+#Open port 22 to openssh.
 resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
   ip_protocol       = "tcp"
   security_group_id = aws_security_group.practice_sg.id
@@ -14,6 +15,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_ssh" {
 
 }
 
+#Open 443 to nginx.
 resource "aws_vpc_security_group_ingress_rule" "allow_nginx" {
   ip_protocol       = "tcp"
   security_group_id = aws_security_group.practice_sg.id

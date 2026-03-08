@@ -1,45 +1,20 @@
 ---
-- name: Infra Setup
-  hosts: all
-  gather_facts: true
-  vars:
-    project_root: "{{ playbook_dir }}/.."
-
+#Play 1, setup system.
+- name: Prepare venv
+  hosts: web_servers
+  become: true
   tasks:
-    - name: Check certs
-      become: true
-      file:
-        path: "{{ project_root }}/certs"
-        state: directory
-        mode: '0775'
-
-    - name: Generate Nginx SSL Certificate
-      command: >
-        openssl req -x509 -nodes -days 365 -newkey rsa:2048
-        -keyout {{ project_root }}/certs/nginx.key
-        -out {{ project_root }}/certs/nginx.crt
-        -subj "/C=US/ST=CA/L=Sacramento/O=Dev/CN=localhost"
-      args:
-        #Skips this task if the file already exists
-        creates: "{{ project_root }}/certs/nginx.crt"
-
-    - name: Set permissions
-      become: true
-      file:
-        path: "{{ item }}"
-        mode: '0644'
-        #Modern fact naming for the current user
-        owner: "{{ ansible_facts['user_id'] }}"
-      loop:
-        - "{{ project_root }}/certs/nginx.key"
-        - "{{ project_root }}/certs/nginx.crt"
-
-    - name: Start Docker Compose Project
-      community.docker.docker_compose_v2:
-        project_src: "{{ project_root }}"
+    - name: Install Docker
+      apt:
+        name: [docker.io, docker-compose-v2]
+        update_cache: yes
         state: present
-        pull: always
-        #Specific path for Docker Desktop on Mac
-        #docker_host: "unix:///var/run/docker.sock"
-      #Docker on Mac runs as the user, not root
-      become: false
+
+    - name: Add ubuntu user to docker group
+      user:
+        name: ubuntu
+        groups: docker
+        append: yes
+
+    - name: Reset connection to pick up group changes
+      meta: reset_connection

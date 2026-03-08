@@ -1,4 +1,4 @@
-name: Test Run 1
+name: Test Run
 on: [push]
 
 jobs:

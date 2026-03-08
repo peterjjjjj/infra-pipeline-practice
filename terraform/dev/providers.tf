@@ -8,12 +8,12 @@ terraform {
     }
   }
 
-  # backend "s3" {
-  #   bucket  = "TERRAFORM-S3-BUCKET"
-  #   key     = "dev/terraform.tfstate"
-  #   region  = aws_region
-  #   encrypt = true
-  # }
+  backend "s3" {
+    bucket  = "infra-practice-s3"
+    key     = "dev/terraform.tfstate"
+    region  = "us-west-1"
+    encrypt = true
+  }
 }
 
 provider "aws" {

@@ -19,7 +19,9 @@ jobs:
       #The tfvars file has been logged in repo secrets, make it into a file again.
       - name: Create tfvars file
         working-directory: ./terraform/dev
-        run: echo "${{ secrets.TFVARS_CONTENT }}" > terraform.tfvars
+        run: |
+          echo "${{ secrets.TFVARS_CONTENT }}" > terraform.tfvars
+          cat terraform.tfvars
 
       #Same with AWS access keys.
       - name: Terraform Init & Apply

@@ -35,6 +35,7 @@ jobs:
           python-version: '3.10'
 
       - name: Install Ansible Dependencies
+        working-directory: ./terraform/dev
         run: |
           pip install ansible
           ansible-galaxy collection install community.docker

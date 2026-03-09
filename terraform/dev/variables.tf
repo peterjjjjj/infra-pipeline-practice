@@ -8,6 +8,7 @@ variable "aws_region" {
 variable "key_name" {
   description = "Name of the SSK Key pair accessing EC2"
   type        = string
+  default     = "practice"
 }
 
 variable "instance_type" {

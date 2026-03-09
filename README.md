@@ -6,11 +6,11 @@ Just to deploy the simple flask app to my server.
 
 Tech Stack: 
 
-Infrastructure: Terraform, AWS 
+    Infrastructure: Terraform, AWS 
 
-Configuration: Ansible
+    Configuration: Ansible
 
-Containerization: Docker 
+    Containerization: Docker 
 
-App: Flask, Nginx 
+    App: Flask, Nginx 
 

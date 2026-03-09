@@ -20,8 +20,9 @@ jobs:
       - name: Create tfvars file
         working-directory: ./terraform/dev
         run: |
-          echo "${{ secrets.TFVARS_CONTENT }}" > terraform.tfvars
-          cat terraform.tfvars
+          cat <<EOF > terraform.tfvars
+          ${{ secrets.TFVARS_CONTENT }}
+          EOF
 
       #Same with AWS access keys.
       - name: Terraform Init & Apply

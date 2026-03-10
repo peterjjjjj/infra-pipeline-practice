@@ -61,7 +61,7 @@
 
     - name: Start Docker Compose Project
       community.docker.docker_compose_v2:
-        project_src: "{{ project_root }}"
+        project_src: "{{ project_root }}/docker"
         state: present
         pull: always
         build: always

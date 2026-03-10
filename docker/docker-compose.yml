@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   practice_app:
-    build: .
+    build: ..
     #Open port 5000 to other containers.
     expose:
       - "5000"

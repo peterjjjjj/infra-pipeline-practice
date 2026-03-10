@@ -1,5 +1,0 @@
-To do lists:
-
-Upload secrets to github secrets,
-
-Create github CICD workflow to automate deployment on the server,

@@ -70,6 +70,9 @@
 
     - name: Pull and Restart
       community.docker.docker_compose_v2:
-        project_src: /home/ubuntu/practice/
+        project_src: /home/ubuntu/practice
+        files:
+          - docker-compose.yml
         state: present
         pull: always
+        recreate: always

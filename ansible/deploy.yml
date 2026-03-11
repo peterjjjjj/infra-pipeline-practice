@@ -19,18 +19,18 @@
         mode: '0755'
 
     #Copy files to server, will replace this with github auto deploy later.
-    - name: Copy project files to server
-      copy:
-        src: "{{ item }}"
-        dest: "{{ project_root }}"
-        mode: '0755'
-      loop:
-        - "../app.py"
-        - "../Dockerfile"
-        - "../docker-compose.yml"
-        - "../nginx.conf"
-        - "../requirements.txt"
-        - "../templates"
+#    - name: Copy project files to server
+#      copy:
+#        src: "{{ item }}"
+#        dest: "{{ project_root }}"
+#        mode: '0755'
+#      loop:
+#        - "../app.py"
+#        - "../Dockerfile"
+#        - "../docker-compose.yml"
+#        - "../nginx.conf"
+#        - "../requirements.txt"
+#        - "../templates"
 
 
     - name: Ensure certs directory exists
@@ -60,13 +60,8 @@
         - "{{ project_root }}/certs/nginx.key"
         - "{{ project_root }}/certs/nginx.crt"
 
-    - name: Start Docker Compose Project
+    - name: Pull and Restart
       community.docker.docker_compose_v2:
-        project_src: "{{ project_root }}/docker"
+        project_src: /home/ubuntu/practice
         state: present
         pull: always
-        build: always
-        #Specific path for Docker Desktop on Mac
-        #docker_host: "unix:///var/run/docker.sock"
-      #Docker on Mac runs as the user, not root
-      become: false

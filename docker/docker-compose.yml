@@ -2,11 +2,9 @@ version: '3.8'
 
 services:
   practice_app:
-    build: ..
-    #Open port 5000 to other containers.
-    expose:
-      - "5000"
-    restart: always
+    image: peterj0412/practice:latest
+    ports:
+      - "5000:5000"
 
   nginx:
     image: nginx:latest

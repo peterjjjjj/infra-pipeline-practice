@@ -1,11 +1,22 @@
+# Local virtual environments
+.venv/
 venv/
-../.venv/
+env/
 
-static/
+# Python cache
+__pycache__/
+*.py[cod]
 
+# Sensitive Infrastructure files
+keys/
+*.pem
+.terraform/
+terraform.tfstate*
+*.tfvars
 
+# Development scripts
 run_app.sh
 
+# Logs
 logs/
-
 

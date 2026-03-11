@@ -36,7 +36,7 @@
       copy:
         src: "../{{ item }}"
         dest: "{{ project_root }}"
-        mode: '0644'
+        mode: '0755'
       loop:
           - "docker-compose.yml"
           - "nginx.conf"

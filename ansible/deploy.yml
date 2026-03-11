@@ -38,8 +38,8 @@
         dest: "{{ project_root }}"
         mode: '0644'
       loop:
-          - "../docker-compose.yml"
-          - "../nginx.conf"
+          - "docker-compose.yml"
+          - "nginx.conf"
 
     - name: Ensure certs directory exists
       file:

@@ -3,7 +3,6 @@ venv/
 
 static/
 
-templates/
 
 run_app.sh
 

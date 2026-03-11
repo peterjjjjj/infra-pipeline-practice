@@ -30,6 +30,7 @@
         - "../docker-compose.yml"
         - "../nginx.conf"
         - "../requirements.txt"
+        - "../templates"
 
 
     - name: Ensure certs directory exists

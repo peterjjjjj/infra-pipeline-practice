@@ -73,4 +73,3 @@
         project_src: /home/ubuntu/practice
         state: present
         pull: always
-        recreate: always

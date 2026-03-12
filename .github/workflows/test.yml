@@ -50,6 +50,5 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          file: ./Dockerfile
           push: true
           tags: peterj0412/practice:latest

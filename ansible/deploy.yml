@@ -18,6 +18,13 @@
         group: ubuntu
         mode: '0755'
 
+    - name: Pull latest configs from GitHub
+      git:
+        repo: 'https://github.com/peterjjjjj/infra-pipeline-practice.git'
+        dest: "{{ project_root }}"
+        version: main
+        force: yes
+
     #Copy files to server, will replace this with github auto deploy later.
 #    - name: Copy project files to server
 #      copy:
@@ -33,7 +40,7 @@
 #        - "../templates"
 
 
-    - name: Ensure certs directory exists
+    - name: Ensure certdeploy.ymls directory exists
       file:
         path: "{{ project_root }}/certs"
         state: directory
@@ -63,8 +70,6 @@
     - name: Pull and Restart
       become: true
       community.docker.docker_compose_v2:
-        project_src: /home/ubuntu/practice
-        files:
-          - docker-compose.yml
+        project_src: "{{ project_root }}"
         state: present
         pull: always

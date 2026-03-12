@@ -5,6 +5,7 @@ on:
     workflows: ["Test Run"]
     types:
       - completed
+    workflow_dispatch:
 
 jobs:
   terraform-ansible:

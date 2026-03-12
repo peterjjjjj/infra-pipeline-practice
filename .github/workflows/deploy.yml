@@ -5,6 +5,7 @@ on:
     workflows: ["Test Run"]
     types:
       - completed
+  #Executes after test.yml.
   workflow_dispatch:
 
 jobs:

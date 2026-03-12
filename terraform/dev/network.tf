@@ -24,7 +24,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_nginx" {
   cidr_ipv4         = "0.0.0.0/0"
 }
 
-resource "aws_vpc_security_group_ingress_rule" "allow_nginx_80" {
+resource "aws_vpc_security_group_ingress_rule" "allow_http" {
   ip_protocol       = "tcp"
   security_group_id = aws_security_group.practice_sg.id
   from_port         = 80

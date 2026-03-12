@@ -61,11 +61,17 @@
       file:
         path: "{{ item }}"
         mode: '0644'
-        #Modern fact naming for the current user
-        owner: "{{ ansible_facts['user_id'] }}"
+        owner: ubuntu
       loop:
         - "{{ project_root }}/certs/nginx.key"
         - "{{ project_root }}/certs/nginx.crt"
+
+    - name: Ensure Nginx logs directory exists
+      file:
+        path: "{{ project_root }}/logs/nginx"
+        state: directory
+        owner: ubuntu
+        mode: '0755'
 
     - name: Pull and Restart
       become: true

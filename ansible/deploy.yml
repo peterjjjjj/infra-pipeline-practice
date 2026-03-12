@@ -32,14 +32,6 @@
 #        - "../requirements.txt"
 #        - "../templates"
 
-    - name: Copy orchestration files to server
-      copy:
-        src: "{{ item }}"
-        dest: "{{ project_root }}"
-        mode: '0644'
-      loop:
-          - "../docker-compose.yml"
-          - "../nginx.conf"
 
     - name: Ensure certs directory exists
       file:
@@ -69,10 +61,10 @@
         - "{{ project_root }}/certs/nginx.crt"
 
     - name: Pull and Restart
+      become: true
       community.docker.docker_compose_v2:
         project_src: /home/ubuntu/practice
         files:
           - docker-compose.yml
         state: present
         pull: always
-        recreate: always
